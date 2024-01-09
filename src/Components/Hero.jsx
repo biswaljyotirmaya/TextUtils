@@ -4,7 +4,10 @@ import react from 'react';
 const Hero = (props) => {
     const [text, setText] = react.useState("");
     
-    
+    const toPrevious = () => {
+       history.back();
+        props.sendAlert("Moved to prevoius step", "success");
+    }
 
     function toUppercase() {
         let newText = text.toUpperCase();
@@ -51,6 +54,7 @@ const Hero = (props) => {
     <textarea className="form-control" rows={8} style={{backgroundColor:props.theme==='light'?'white':'grey',color: props.theme === 'dark' ? 'white' : 'black'}} placeholder="Enter what you want" id="floatingTextarea" onChange={handleChange} value={text}>
         {text}
     </textarea>
+    <button type="button" className="btn btn-primary m-1" onClick={toPrevious}>Previous</button>
     <button type="button" className="btn btn-primary m-1" onClick={toUppercase}>UpperCase</button>
     <button type="button" className="btn btn-primary m-1" onClick={toLowercase}>LowerCase</button>
     <button type="button" className="btn btn-primary m-1" onClick={clearText}>Clear</button>
